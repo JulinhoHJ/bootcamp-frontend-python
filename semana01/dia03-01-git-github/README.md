@@ -14,3 +14,4 @@ Este repositorio nos sirve para aprender el flujo de trabajo de GIT y Github.
 * git status : Para ver el estado de nuestro repositorio
 * git add .
 * git commit -m "subir archivos de la primera semana"
+* git log : lista los commit que hemos confirmado
