@@ -39,3 +39,8 @@ Este repositorio nos sirve para aprender el flujo de trabajo de GIT y Github.
 
 * git checkout ejemplo
 * git checkout -b ejemplos
+
+* git switch -C ejemplo2
+* git switch ejemplo2
+
+* git merge ejemplo2
