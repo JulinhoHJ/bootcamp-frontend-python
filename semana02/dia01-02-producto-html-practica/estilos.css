@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url(fonts/Montserrat/Montserrat-VariableFont_wght.ttf) format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url(fonts/Montserrat/Montserrat-VariableFont_wght.ttf) format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url(fonts/Fraunces/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf) format('truetype');
+  font-weight: 700;
+}
+
+/* TODO: Descargar la fuente Fraunces desde Google fonts y usarla en el body */
+
+body {
+  background-color: hsl(30, 38%, 92%);
+  font-size: 14px;
+  font-family: 'Montserrart', sans-serif;
+  display: flex; /* Flexbox */
+  justify-content: center; /* Alineamiento horizontal */
+  align-items: center; /* Alineamiento vertical */
+  height: 100vh; /* vh <> Viewport height */
+
+}
+
+main {
+  border: 1px solid red;
+  width: 650px;
+  display: flex; /* Flexbox */
+  min-height: 400px;
+}
+
+.photo {
+  width: 350px;
+  background-image: url(images/image-product-desktop.jpg);
+  background-size: cover;
+  
+}
+
+.content {
+  width: 300px;
+  padding: 28px; /*Espacio entre el borde y el contenido */
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  background-color: hsl(0, 0%, 100%);
+}
+
+.content h2 { /* selectores combinados */
+  margin: 0; /* resetea el margen de este h2 */
+  text-transform: uppercase;
+  font-weight: 500;
+  color: hsl(228, 12%, 48%);
+  font-size: 14px;
+  letter-spacing: 7px;
+}
+
+/* TODO: Terminar con los estilos de las etiquetas h1 y p aplicando colores, fuentes, tamaños */
+
+.content h1 {
+  margin: 0; /* resetea el margen de este h2 */
+  font-family: 'Fraunces', sans-serif;
+}
+
+.content p {
+  margin: 0; /* resetea el margen de este h2 */
+  color: hsl(228, 12%, 48%);
+  line-height: 28px;
+}
