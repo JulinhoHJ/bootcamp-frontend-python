@@ -66,7 +66,9 @@ main {
 .content h1 {
   margin: 0; /* resetea el margen de este h2 */
   font-family: 'Fraunces', sans-serif;
-}
+  font-size: 38px;
+  line-height: 38px;
+  }
 
 .content p {
   margin: 0; /* resetea el margen de este h2 */
