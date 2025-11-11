@@ -1,3 +1,28 @@
 p {
   color: blue;
+  background-color: chartreuse;
+  font-size: 20px;
+}
+
+/* TODO: Añadan un background a la etiqueta h1 y cambien su tamaño a 50px */
+
+h1 {
+  background-color: cadetblue;
+  font-size: 50px;
+}
+
+h3 {
+  background-color: orange;
+}
+
+#estado {
+  background-color: brown;
+}
+
+.btn {
+  background-color: goldenrod;
+}
+
+.texto-resaltado {
+  color: blue;
 }
