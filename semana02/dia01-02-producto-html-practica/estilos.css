@@ -108,6 +108,12 @@ main {
   gap: 7px;
 }
 
+.content i {
+  width: 20px;
+  background-image: url(images/icon-cart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
 /* TODO: Añadir al boton la imagen del carrito, revisar la carpeta images. Y alinearlo como está en el diseño */
 
 /* TODO: Añadir bordes redondeados a la etiqueta main, a la caja principal como está en el diseño */

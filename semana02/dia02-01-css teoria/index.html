@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teoria CSS</title>
+  <style>
+    /* Pseudo clases */
+    /* Actuan cuando el usuario interactúa con un elemento */
+    button {
+      background-color: red;
+    }
+
+    button:hover {
+      background-color: green;
+      cursor: pointer;
+    }
+
+    /* Pseudo elementos */
+    /* Permiten crear partes virtuales de un elemento */
+    p {
+      color: blue;
+    }
+
+    p::before {
+      content: '✅';
+      color: green;
+    }
+
+    p::after {
+      content: '♐';
+      color: green;
+    }
+
+    /* Selector combinados */
+    /* Selector descendiente */
+    
+    article h2 {
+      color: orange;
+    }
+
+    article strong {
+      color: gold;
+    }
+
+    /* Selector de múltiples selectores */
+
+    h1, h3, em {
+      border: 5px solid salmon;
+    }
+
+    /* Herencia */
+    /* Algunos estilos se heredan automáticamente y otros no lo hacen */
+
+    body {
+      color: darkblue;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* Cascada */
+    /* La cascada decide que estilo gana cuando hay conflictos. Depende del orden, especificidad y herencia */
+
+    #cabecera {
+      color: blue;
+    }
+
+    header {
+      color: green;
+    }
+
+    .texto {
+      color: red;
+    }
+
+    /* Unidades de medida */
+    /*
+      Absolutas: px, cm, in
+      Relativas: em, rem (más modernas y flexibles), %, vh, vw
+    */
+
+    /* Colores */
+
+    /*
+    */
+    
+    h2 {
+      color: red;
+      color: #FFF514; /* hexadecimales */
+      color: hsl(99, 92%, 37%); /* Hue (matiz), Saturation (saturación), Lightness (Luminosidad) */
+      color: hsla(99, 92%, 37%, 0.5); /* Hue (matiz), Saturation (saturación), Lightness (Luminosidad) */
+      color: rgb(0, 0, 255); /* 3 números decimales van entre 0 y 255 (rojo, verde, azul) */
+      color: rgba(0, 0, 255, 0.5); /* con transparencia */
+    }
+
+  </style>
+</head>
+<body>
+  <button>Click aqui!</button>
+  <p>Texto especial</p>
+
+  <article>
+    <h2>Bienvenido</h2>
+    <strong>Hola</strong>
+  </article>
+
+  <section>
+    <h1>Titulo</h1>
+    <h3>Subtitulo</h3>
+    <em>texto con enfasis</em>
+    <a href="">Soy un link</a>
+  </section>
+
+  <header id="cabecera" class="texto">'De qué color soy?
+  </header>
+
+</body>
+</html>
