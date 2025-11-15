@@ -1,0 +1,184 @@
+body {
+  background-color: hsl(148, 38%, 91%);
+  font-size: 16px;
+  font-family: 'Karla', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.contact-form {
+  min-width: 400px;
+  background-color: hsl(0, 0%, 100%);
+ 
+  border-radius: 16px;
+ 
+  padding: 32px;
+}
+
+.titulo {
+  margin: 0;
+  color: hsl(187, 24%, 22%);
+  margin-bottom: 32px;
+}
+
+label {
+  display: block;
+  margin-bottom: 16px;
+  /*color: hsl(186, 15%, 59%);*/
+}
+
+input[type=text], 
+input[type=email],
+textarea {
+  display: flex;
+  margin-top: 8px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid hsl(186, 15%, 59%);
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* TODO: Darle estilos al boton del formulario */
+
+input[type=submit] {
+  width: 100%;
+  border: 0;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(169, 82%, 27%);
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+input[type=submit]:hover {
+  background-color: hsl(169, 82%, 20%);
+  cursor: pointer;
+}
+
+.required {
+  color: hsl(186, 15%, 59%);
+  margin-left: 8px;
+}
+
+.query-type {
+  border: 1px solid hsl(186, 15%, 59%);
+  display: flex;
+  gap: 4px;
+  padding: 16px;
+  margin-top: 8px;
+  border-radius: 8px;
+  /*width: 100%;*/
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  /*display: flex;
+  box-sizing: border-box;*/
+}
+
+/*
+.doble-col {
+  display: flex;
+  gap: 16px;
+}
+
+.input-doble {
+  width: 190px;
+  font-size: 32px;
+  border-radius: 8px;
+  border-color: hsl(186, 15%, 59%);
+  border-style:solid;
+  border-width: 1px;
+  display: block;
+  margin-top: 8px;
+}
+
+.input-unico {
+  min-width: 400px;
+  font-size: 32px;
+  border-radius: 8px;
+  border-color: hsl(186, 15%, 59%);
+  border-style:solid;
+  border-width: 1px;
+  display: block;
+  margin-top: 8px;
+}
+
+.label-doble {
+  width: 176px;
+  border-radius: 8px;
+  border-color: hsl(186, 15%, 59%);
+  border-style:solid;
+  border-width: 1px;
+  margin-top: 8px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.input-radio {
+  border-color: hsl(186, 15%, 59%);
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-style:solid;
+  border-width: 1px;
+  margin-right: 16px;
+  border-radius: 8px;
+}
+
+.sub-titulo {
+  margin-bottom: 16px;
+  color: hsl(186, 15%, 59%);
+}
+
+.required {
+  color: hsl(186, 15%, 59%);
+  margin-left: 8px;
+}
+
+textarea {
+  min-width: 400px;
+  min-height: 80px;
+  display: block;
+  margin-top: 8px;
+  border-color: hsl(186, 15%, 59%);
+  border-style:solid;
+  border-width: 1px;
+  resize: none;
+  border-radius: 8px;
+}
+
+.button {
+  min-width: 400px;
+  border: 0;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(169, 82%, 27%);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.check-text {
+  border-color: hsl(186, 15%, 59%);
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.check {
+  border-color: hsl(186, 15%, 59%);
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-style:solid;
+  border-width: 1px;
+  margin-right: 16px;
+}
+  */
