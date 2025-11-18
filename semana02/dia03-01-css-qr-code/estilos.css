@@ -1,0 +1,37 @@
+body {
+  background-color: hsl(212, 45%, 89%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Outfit", sans-serif;
+  font-size: 15px;
+  margin: 0;
+}
+
+main {
+  width: 300px;
+  padding: 15px;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 15px;
+  text-align: center;
+}
+
+img {
+  width: 300px;
+  border-radius: 15px;
+}
+
+/* TODO: Agregar la fuente de este ejercicio y aplicar los estilos a las etiquetas p y h1 */
+
+p {
+  color: hsl(216, 15%, 48%);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 25px;
+  color: hsl(218, 44%, 22%);
+  font-weight: 700;
+}
