@@ -1,0 +1,188 @@
+/* GENERALES */
+* { /* Selector universal */
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: hsl(217, 28%, 15%);
+  color: hsl(0, 0%, 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  /* RWD para imagenes */
+  max-width: 100%;
+  height: auto;
+}
+
+/* UTILS */
+
+.wrapper {
+  width: min(100% - 42px, 1440px);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* HEADER SECTION */
+
+.header {
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 42px;
+}
+
+.header__nav {
+  /* TODO: terminar el css de este nav */
+  display: flex;
+  gap: 42px;
+}
+
+/* HERO SECTION */
+
+/* TODO: terminar el css para la sección abajo del header(hero). Usen bem para el nombrado de las clases y reutilicen la función min */
+
+.main {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 42px;
+}
+/* REM: Root EM(Ancho de la letra M) o Entidad de Medida Relativa */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* 14px * 2 = 28px = 2rem */
+  align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 12rem;
+  text-align: center;
+
+  background-image: url(../images/bg-curvy-mobile.svg);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+}
+
+.hero__image {
+  
+}
+
+.hero__title {
+  width: min(100% - 3rem, 720px);
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.hero__text {
+  /* TODO: terminar de aplicar los estilos al parrafo del hero */
+  width: min(100% - 3rem, 720px);
+  font-size: 1.2rem;
+}
+
+.hero__button {
+  font-weight: 700;
+  border: none;
+  border-radius: 7rem;
+  padding: 1rem;
+  min-width: 220px;
+  background-color: hsl(176, 68%, 64%);
+  color: hsl(0, 0%, 100%);
+}
+
+/* FEATURES SECTION */
+
+.features {
+  background-color: hsl(218, 28%, 13%);
+  display: grid;
+  grid-template-columns: 340px; /* MOBILE FIRST */
+  justify-content: center;
+  gap: 5rem;
+}
+
+/* TAMAÑOS DE PANTALLA SUGERIDOS 
+576px -> pantallas pequeñas (celulares)
+768px -> pantallas pequeñas (tablets)
+992px -> pantallas medianas (desktop)
+1280px -> pantallas grandes (desktops, TVs)
+*/
+
+/* MEDIA QUERY */
+/* Se aplica a dispositivos móviles, tabletas y desktops */
+
+@media (min-width: 1280px) {
+  .features {
+    grid-template-columns: 340px 340px; /* DESKTOP */
+  }
+  .hero {
+    background-image: url(../images/bg-curvy-desktop.svg);
+  }
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.feature__image {
+
+}
+
+.feature__title {
+  font-family: "Raleway", sans-serif;
+}
+
+.feature__text {
+
+}
+
+/* TODO: COLLABORATION SECTION */
+
+.collaboration {
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem;
+  background-color: hsl(218, 28%, 13%);
+}
+
+.productive {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  text-align: left;
+}
+
+.productive__title {
+  font-family: "Raleway", sans-serif;
+  font-size: 2.5rem;
+}
+
+.productive__text {
+  
+}
+
+.productive_enlace {}
+
+/* TESTIMONIALS SECTION */
