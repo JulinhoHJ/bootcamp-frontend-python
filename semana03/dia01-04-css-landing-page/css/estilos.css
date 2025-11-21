@@ -156,33 +156,122 @@ img {
 /* TODO: COLLABORATION SECTION */
 
 .collaboration {
-  border: 1px solid red;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  padding: 4rem;
+  padding: 6rem 4rem;
   background-color: hsl(218, 28%, 13%);
 }
 
 .productive {
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: center;
   text-align: left;
+  padding: 3rem 0;
 }
 
-.productive__title {
+.productive__title {  
   font-family: "Raleway", sans-serif;
-  font-size: 2.5rem;
+}
+
+@media (min-width: 1280px) {
+  .collaboration {
+    display: flex;
+  }
+  .productive__title {
+    font-size: 4rem;
+  }
 }
 
 .productive__text {
-  
+  line-height: 1.5;
 }
 
-.productive_enlace {}
+.productive_enlace {
+  align-self: flex-start;
+  border-bottom: 1px solid hsl(176, 68%, 64%);
+  color: hsl(176, 68%, 64%);
+  background-image: url(../images/icon-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-right: 1.5rem;
+}
 
 /* TESTIMONIALS SECTION */
+
+.testimonials {
+  display: grid;
+  grid-template-columns: 380px;
+  justify-content: center;
+  gap: 3rem;
+  padding: 4rem;
+  background-color: hsl(218, 28%, 13%);
+  color: hsl(0, 0%, 100%);
+  position: relative;
+}
+
+.testimonials--wrapper {
+  background-image: url(../images/bg-quotes.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 65px;
+  height: 50px;
+  left: 1rem;
+  top: 1.5rem;
+}
+
+.testimonial {
+  background-color: hsl(219, 30%, 18%);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem 2rem 2rem 2rem;
+  position: relative;
+}
+
+.testimonial__text {
+  text-align: left;
+  line-height: 1.5;
+}
+
+.testimonial__profile {
+  display: flex;
+  justify-items: left;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial__profile img {
+  width: 40px;
+  border-radius: 3rem;
+}
+
+.testimonial__profile div {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.5rem;
+}
+
+.testimonial__profile div h4 {
+  font-family: "Raleway", sans-serif;
+}
+
+.testimonial__profile div h5 {
+  font-weight: 400;
+}
+
+@media (min-width: 1280px) {
+  .testimonials {
+    display: grid;
+    grid-template-columns: 380px 380px 380px;
+  }
+
+  .testimonials--wrapper {
+    left: 6.5rem;
+    top: 1.5rem;
+  }
+}
