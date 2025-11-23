@@ -100,7 +100,7 @@ img {
   border-radius: 7rem;
   padding: 1rem;
   min-width: 220px;
-  background-color: hsl(176, 68%, 64%);
+  background: linear-gradient(hsl(176, 68%, 64%), hsl(198, 60%, 50%));
   color: hsl(0, 0%, 100%);
 }
 
@@ -202,7 +202,7 @@ img {
 /* TESTIMONIALS SECTION */
 
 .testimonials {
-  padding-bottom: 8rem;
+  padding-bottom: 18rem;
   background-color: hsl(218, 28%, 13%);
 }
 
@@ -275,6 +275,7 @@ img {
   background-color: hsl(216, 53%, 9%);
   text-align: left;
   padding: 15rem 0 5rem 0;
+  position: relative;
 }
 
 .footer--wrapper {
@@ -325,6 +326,55 @@ img {
 
 @media (min-width: 1280px) {
   .footer-info {
+    flex-direction: row;
+  }
+}
+
+/* EARLY ACCESS SECTION */
+
+.early-access {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  background-color: hsl(217, 28%, 15%);
+  width: min(100% - 3rem, 720px);
+  position: absolute;
+  top: -14rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.early-access__title {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5rem;
+}
+
+.early-access__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+}
+
+.early-access__form input[type="email"] {
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10rem;
+  width: 100%;
+}
+
+@media (min-width: 1280px) {
+  .early-access__title {
+    font-size: 2rem;
+  }
+  .early-access {
+    padding: 2rem 4rem;
+    top: -9rem;
+  }
+  .early-access__form {
     flex-direction: row;
   }
 }
