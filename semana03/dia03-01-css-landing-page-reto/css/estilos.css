@@ -234,7 +234,7 @@ button {
 }
 
 .footer-info__contact {
-  width: 24rem;
+  width: min(100%, 24rem);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -276,6 +276,7 @@ button {
   display: flex;
   justify-content: center;
   font-size:  1rem;
+  text-align: center;
 }
 
 @media (min-width: 992px) {
