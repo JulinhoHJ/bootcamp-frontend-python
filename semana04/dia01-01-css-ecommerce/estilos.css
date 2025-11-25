@@ -1,0 +1,48 @@
+/* CUSTOM PROPERTIES -> Variables */
+
+/* GENERALES */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+img {
+  /* RWD */ 
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* UTILS */
+
+.hidden {
+  display: none !important;
+}
+
+.wrapper {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+}
+
+/* HEADER SECTION */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__navegacion {}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <!-- TODO: Maquetar con HTML el reto -->
+  <header class="header wrapper">
+    <div class="header__navegacion">
+      <img class="header__logo" src="images/logo.svg" alt="logo"/>
+      <nav class="header__links">
+        <a href="">Collections</a>
+        <a href="">Men</a>
+        <a href="">Women</a>
+        <a href="">About</a>
+        <a href="">Contact</a>
+      </nav>
+    </div>
+    <div class="header__icons">
+      <img src="images/icon-cart.svg" alt="Cart icon"/>
+      <img src="images/image-avatar.png" alt="Avatar"/>
+    </div>
+  </header>
+  
+  <main class="product-detail hidden">
+    <section class="gallery">
+      <div class="gallery__cover--wrapper">
+        <img class="gallery__cover" src="images/image-product-1.jpg" alt="Sneaker"/>
+      </div>
+      <div class="gallery__slider">
+        <div class="gallery__photo--active">
+          <img class="gallery__photo" src="images/image-product-1-thumbnail.jpg" alt="Sneaker thumbnail"/>
+        </div>
+        <div>
+          <img class="gallery__photo" src="images/image-product-2-thumbnail.jpg" alt="Sneaker thumbnail"/>
+        </div>
+        <div>
+          <img class="gallery__photo" src="images/image-product-3-thumbnail.jpg" alt="Sneaker thumbnail"/>
+        </div>
+        <div>
+          <img class="gallery__photo" src="images/image-product-4-thumbnail.jpg" alt="Sneaker thumbnail"/>
+        </div>
+      </div>
+    </section>
+    <section class="product">
+      <!-- TODO: Maquetar la sección del producto -->
+      <h2 class="product__subtitle">Sneaker Company</h2>
+      <h1 class="product__title">Fall Limited Edition Sneakers</h1>
+      <p class="product__description">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+      <div class="product__price">
+        <div class="product__price--wrapper">
+          <span class="product__amount">$125.00</span>
+          <span class="product__discount">50%</span>
+        </div>
+        <span class="product__price--before">$250.00</span>
+      </div>
+      <form class="cart">
+        <div class="cart__quantity">
+          <button>
+            <img src="images/icon-minus.svg" alt="Minus icon"/>
+          </button>
+          <input type="text" value="0" readonly/>
+          <button>
+            <img src="images/icon-plus.svg" alt="Plus icon"/>
+          </button>
+        </div>
+        <button class="cart__add">
+          <img src="images/icon-cart.svg" alt="Cart icon"/>
+          Add to cart
+        </button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
