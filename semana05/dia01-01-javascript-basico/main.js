@@ -273,3 +273,60 @@ do {
   console.log(j)
   j++
 } while (j < 5)
+
+// EJERCICIOS
+
+// 1. Determinar si la edad de una persona es mayor de edad o menor de edad mostrando 'Mayor de edad' o 'Menor de edad'
+const edadPersona = 39
+if (edadPersona >= 18) {
+  console.log('Ejercicio 1: ', 'Mayor de edad')
+} else {
+  console.log('Ejercicio 1: ', 'Menor de edad')
+}
+
+// 2. Retornar un saludo en tres diferentes lenguajes:
+//    - si es español mostrará 'Hola'
+//    - si es inglés mostrará 'Hello'
+//    - si es aimara mostrará 'kamisaraki'
+let idioma = 'inglés'
+if (idioma === 'español') {
+  console.log('Ejercicio 2: ', 'Hola')
+} else if (idioma === 'inglés') {
+  console.log('Ejercicio 2: ', 'Hello')
+} else if (idioma === 'aimara') {
+  console.log('Ejercicio 2: ', 'kamisaraki')
+}
+
+// 3. Si un numero es divisible entre 3 y 5 devolver 'fizzbuzz'
+//    Si un numero es divisible entre 3 devolver 'fizz'
+//    Si un numero es divisible entre 5 devolver 'buzz'
+//    De lo contrario devolver el mismo número
+const num = 30
+if (num % 3 === 0 && num % 5 === 0) {
+  console.log('Ejercicio 3: ', 'fizzbuzz')
+} else if (num % 3 === 0) {
+  console.log('Ejercicio 3: ', 'fizz')
+} else if (num % 5 === 0) {
+  console.log('Ejercicio 3: ', 'buzz')
+} else {
+  console.log('Ejercicio 3: ', num)
+}
+
+// 4. Retornar true si un numero es primo sino devolver false
+//    Pista: un numero primo es divisible por sí mismo y por 1
+let num2 = 7;
+let esPrimo = true;
+for (let i = 2; i < num2; i++) {
+  if (num2 % i === 0) {
+    esPrimo = false;
+    break;
+  }
+}
+console.log("Ejercicio 4:", esPrimo);
+
+// 5. Devolver un valor que se incremente de dos en dos y devuelva los menores a 10
+let num3 = 0
+while (num3 < 10) {
+  console.log('Ejercicio 5: ', num3)
+  num3 = num3 + 2
+}
