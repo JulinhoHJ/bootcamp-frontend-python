@@ -24,7 +24,7 @@ buttons.forEach(function(button) {
 
     // TODO: Agregar la lógica de la calculadora
 
-    if (!isNaN(botonTexto)) {
+    /*if (!isNaN(botonTexto)) {
       if (numeroActual === '0') {
         numeroActual = botonTexto
       } else {
@@ -63,6 +63,38 @@ buttons.forEach(function(button) {
       inputDisplay.value = numeroActual
       operador = ''
       operando = ''
+    }*/
+
+    //Paso 02: Evaluamos el operador seleccionado
+    if ('+-*'.includes(botonTexto)) {
+      operador = botonTexto
+      operando = Number(numeroActual) // Guardamos temporalmente el número actual
+      numeroActual = '0'
+    } else if (botonTexto === '=') {
+      // Paso 03: Cuando presionamos el botón =
+      // Aqui realizamos las operaciones en base al número actual y el operando
+
+      //TODO: Añadir la lógica para sorportar las operaciones de resta y multiplicación
+      if (operador === '+') {
+        numeroActual = Number(operando) + Number(numeroActual)
+      } else if (operador === '-') {
+        numeroActual = Number(operando) - Number(numeroActual)
+      } else if (operador === '*') {
+        numeroActual = Number(operando) * Number(numeroActual)
+      }
+    } else if (botonTexto === 'CE') {
+      // Paso 04: Cuando presionamos el botón CE
+      // Limpiamos operando, operador y numeroActual
+      numeroActual = '0'
+      operador = ''
+      operando = ''
     }
+    else {
+      //Paso 01: Evaluar cuando presionamos algún número
+      numeroActual = Number(numeroActual + botonTexto)
+    }
+    
+    inputDisplay.value = numeroActual
+
   })
 })
