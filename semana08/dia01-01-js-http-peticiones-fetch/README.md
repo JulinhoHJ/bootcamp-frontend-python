@@ -75,3 +75,13 @@ En JS:
 JSON.stringify({ name: 'Alonso' }) // Convertimos a una cadena de texto con el formato JSON
 JSON.parse('{ "name": "Alonso" }') // Convertimos una cadena de texto con el formato JSON a un objeto JS
 ```
+
+## STATUS CODE
+
+200   -> Todo OK
+201   -> Recurso creado (POST)
+400   -> Error del cliente
+401   -> No autenticado
+403   -> Sin permisos
+404   -> El recurso no existe
+500   -> Error del servidor
