@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind + LocalStorage</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+  <main class="task w-96 border mx-auto rounded-lg p-4 mt-4">
+    <section class="flex flex-col gap-4">
+      <h1 class="task__title text-xl font-bold text-center text-blue-500">
+        Lista de tareas
+      </h1>
+
+      <label class="flex flex-col gap-1">
+        Ingresa una tarea
+        <input
+          class="task__input border-2 border-gray-300 text-sm rounded-lg p-2"
+          type="text"
+          placeholder="Ej. Aprender javascript"
+        />
+      </label>
+
+      <div class="flex justify-end">
+        <button class="task__clear border border-blue-700 font-medium text-sm text-blue-700 px-2 py-1 rounded-lg hover:bg-blue-700 hover:text-white duration-300 cursor-pointer">
+          Limpiar tareas completadas
+        </button>
+      </div>
+    </section>
+
+    <!-- TODO: Aplicar los estilos con Tailwind a la lista de tareas -->
+
+    <ul class="task__list flex flex-col gap-4 mt-6 border-t-2 border-gray-300 p-3">
+      
+    </ul>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@ const taskInput = document.querySelector('.task__input')
 const taskClear = document.querySelector('.task__clear')
 const taskList = document.querySelector('.task__list')
 
-let tasks = [
+/*let tasks = [
   {
     id: 'tarea-1',
     title: 'Estudiar Javascript',
@@ -18,7 +18,13 @@ let tasks = [
     title: 'Resolver el reto de la semana',
     completed: false
   }
-]
+]*/
+
+let tasks = JSON.parse(localStorage.getItem('TASKS_LS')) ?? []
+
+function saveTasksInLocalStorage(tasks = []) {
+  localStorage.setItem('TASKS_LS', JSON.stringify(tasks))
+}
 
 function renderTasks(tasks = []) {
   //console.log('Renderizando tareas...', tasks)
@@ -33,7 +39,7 @@ function renderTasks(tasks = []) {
           ` + task.title + `
         </div>
         <div class="flex flex-row gap-2">
-          <button class="border border-green-400 font-medium text-sm text-green-400 px-2 py-1 rounded-lg hover:bg-green-400 hover:text-white duration-300 cursor-pointer">
+          <button class="task-item__edit border border-green-400 font-medium text-sm text-green-400 px-2 py-1 rounded-lg hover:bg-green-400 hover:text-white duration-300 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-edit"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" /><path d="M16 5l3 3" /></svg>
           </button>
           <button class="task-item__delete border border-red-500 font-medium text-sm text-red-500 px-2 py-1 rounded-lg hover:bg-red-500 hover:text-white duration-300 cursor-pointer" data-id="${task.id}">
@@ -67,17 +73,22 @@ taskInput.addEventListener('keydown', function(event) {
     tasks.push(newTask)
     renderTasks(tasks)
     taskInput.value = ''
+
+    saveTasksInLocalStorage(tasks)
   }
 })
 
 taskList.addEventListener('click', function(event) {
   const { target } = event
-  if (target.tagName === 'BUTTON' && target.classList.contains('task-item__delete')) {
+  const buttonRemove = event.target.closest('.task-item__delete')
+
+  if (buttonRemove) {
     console.log('Eliminando tarea...')
-    const { id } = target.dataset // id que queremos eliminar en data-id
+    const { id } = buttonRemove.dataset // id que queremos eliminar en data-id
     console.log(id)
     tasks = tasks.filter(task => task.id !== id)
     renderTasks(tasks)
+    saveTasksInLocalStorage(tasks)
   }
 
   // TODO: Al presionar el check debe completarse la tarea en el arreglo de tasks
@@ -94,6 +105,7 @@ taskList.addEventListener('click', function(event) {
       completed: !tasks[tasksSelectorIndex].completed
     }
     renderTasks(tasks)
+    saveTasksInLocalStorage(tasks)
   }
 })
 
