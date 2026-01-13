@@ -20,6 +20,8 @@ const fetchUsersConRetorno = async () => {
 
 const fetchUsersConManejoErrores = async () => {
   try {
+    document.querySelector('#estado').textContent = 'Cargando...'
+
     const response = await fetch(url)
 
     console.log(response.status)
@@ -28,8 +30,9 @@ const fetchUsersConManejoErrores = async () => {
       //return
       throw new Error('ERROR HTTP: ' + response.status)
     }
-
-    return await response.json()
+    const data = await response.json()
+    document.querySelector('#estado').textContent = ''
+    return data
   } catch (error) {
     console.log(error)
   }
@@ -40,7 +43,7 @@ const renderUsers = async (users = []) => {
   const divApp = document.querySelector('#app')
   let userList = ''
 
-  users.forEach(user => {
+  users.forEach(user => { 
     userList += `
       <h2>${user.id} - ${user.name} (${user.email})</h2>
       <p>${user.company.name}</p>
@@ -51,4 +54,14 @@ const renderUsers = async (users = []) => {
 }
 
 fetchUsersConManejoErrores()
-  .then(users => renderUsers(users))
+    .then(users => {
+      const filteredUsers = users.filter(user => user.address.city === 'McKenziehaven')
+      document.querySelector('#total').textContent = `Hay ${users.length} usuarios`
+      renderUsers(filteredUsers)
+    })
+
+// TODO: Resolver estos ejercicios
+// Mostrar un mensaje de cargando
+// Mostrar solo usuarios de una ciudad, la ciudad es a su elección
+
+// Mostrar cuántos usuarios hay

@@ -1,0 +1,15 @@
+{
+  "name": "dia03-01-js-movie-app-crud-json-server-nodejs",
+  "version": "1.0.0",
+  "description": "Proyecto crud nodejs-js",
+  "license": "ISC",
+  "author": "JulinhoHJ",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "json-server --watch db.json"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon list</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <main class="pokemon-app">
+    <div class="pokemon-wrapper">
+      <h1>Pokemon list</h1>
+
+      <strong id="numberPokemons">Favoritos: 0</strong>
+
+      <section id="pokemonList" class="pokemon-list"></section>
+
+      <div class="pokemon-pagination">
+        <button id="firstPage" class="pokemon-button">Primero</button>
+        <button id="prevPage" class="pokemon-button">Anterior</button>
+        <span id="currentPage" class="pokemon-current-page">1</span>
+        <button id="nextPage" class="pokemon-button">Siguiente</button>
+        <button id="lastPage" class="pokemon-button">Último</button>
+      </div>
+    </div>
+
+    <div class="pokemon-wrapper">
+      <form id="pokemonForm" class="pokemon-form">
+        <h3>Pokemon <small id="pokemonTitle">#</small></h3>
+        <input id="id" type="hidden">
+        <input id="name" type="text" placeholder="Pokemon nombre" required>
+        <input id="image" type="text" placeholder="Pokemon imagen">
+        <button>Guardar</button>
+        <button type="reset">Limpiar</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
