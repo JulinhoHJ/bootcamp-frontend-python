@@ -1,0 +1,32 @@
+### Listar todas las peliculas
+GET http://localhost:3000/movies
+
+### Obtener una pelicula
+GET http://localhost:3000/movies/11
+
+### Crear una pelicula
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+  "name": "G31 La pelicula",
+  "image": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
+  "release": "2026-01-14",
+  "genreId": 3,
+  "summary": "G31 la pelicula mas esperada del año"  
+}
+
+### Borrar una pelicula
+DELETE http://localhost:3000/movies/11
+
+### Actualizar una pelicula
+PUT http://localhost:3000/movies/5
+Content-Type: application/json
+
+{
+  "name": "The Flash Modificado",
+  "image": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg",
+  "release": "2023-06-15",
+  "genreId": 2,
+  "summary": "Resumen de prueba"
+}
