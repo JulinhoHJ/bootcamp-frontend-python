@@ -79,6 +79,38 @@
       "genreId": 3,
       "summary": "G30 la pelicula mas esperada del año",
       "id": 10
+    },
+    {
+      "name": "Pokemon: La Pelicula",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
+      "release": "2026-01-14",
+      "genreId": "2",
+      "summary": "Pokemon la pelicula",
+      "id": 11
+    },
+    {
+      "name": "Pokemon: La Pelicula 2",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg",
+      "release": "2026-01-16",
+      "genreId": "3",
+      "summary": "Pelicula 2",
+      "id": 13
+    },
+    {
+      "name": "Pokemon: La Pelicula 3",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
+      "release": "2026-01-21",
+      "genreId": "3",
+      "summary": "Pelicula 3",
+      "id": 15
+    },
+    {
+      "name": "Pokemon: La Pelicula 4",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
+      "release": "2026-02-05",
+      "genreId": "3",
+      "summary": "Pelicula 4",
+      "id": 16
     }
   ]
 }
