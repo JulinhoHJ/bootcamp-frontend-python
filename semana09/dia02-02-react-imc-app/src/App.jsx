@@ -40,7 +40,7 @@ const App = () => {
   }
 
   return (
-    <section className="w-[400px] bg-slate-200 p-4 mt-8 mx-auto rounded-md">
+    <section className="w-100 bg-slate-200 p-4 mt-8 mx-auto rounded-md">
       <h1 className="text-3xl text-sky-600 text-center font-bold">IMC APP</h1>
       <div className="pt-4">
         <p>Peso: {peso}kg</p>
