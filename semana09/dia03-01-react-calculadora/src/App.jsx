@@ -36,7 +36,7 @@ const App = () => {
   }
 
   return (
-    <main className="bg-blue-400 w-[340px] mx-auto mt-5 p-4 rounded-md shadow-md">
+    <main className="bg-blue-400 w-85 mx-auto mt-5 p-4 rounded-md shadow-md">
       <h1 className="text-3xl font-bold text-center mb-4">Calculadora con React</h1>
       <section className="flex flex-col gap-2">
         <input type="text" readOnly className="border p-2 text-right text-3xl font-bold rounded-md bg-slate-200" value={numeroActual} />
