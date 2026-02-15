@@ -91,7 +91,7 @@ const Login = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-500 text-white p-2 rounded"
+          className="w-full bg-blue-500 text-white p-2 rounded cursor-pointer"
         >
           {loading ? "Cargando..." : "Ingresar"}
         </button>

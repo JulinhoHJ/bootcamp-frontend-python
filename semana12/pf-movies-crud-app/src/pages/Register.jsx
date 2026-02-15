@@ -91,7 +91,7 @@ const Register = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-green-500 text-white p-2 rounded"
+          className="w-full bg-green-500 text-white p-2 rounded cursor-pointer"
         >
           {loading ? "Cargando..." : "Registrarse"}
         </button>

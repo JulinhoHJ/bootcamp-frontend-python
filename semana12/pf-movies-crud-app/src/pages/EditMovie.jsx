@@ -89,7 +89,22 @@ const EditMovie = () => {
 
       navigate("/movies");
     } catch (error) {
-      Swal.fire("Error", error.message, "error");
+      //Swal.fire("Error", error.message, "error");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "error",
+        title: error.message
+      });      
     }
   };
 

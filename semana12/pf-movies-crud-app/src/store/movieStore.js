@@ -27,35 +27,55 @@ export const useMovieStore = create((set, get) => ({
   },
 
   createMovie: async (movieData) => {
-  set({ loading: true });
+    set({ loading: true, error: null });
 
-  const user = await supabase.auth.getUser();
+    const { data: { session }, error: sessionError } =
+      await supabase.auth.getSession();
 
-  const { error } = await supabase
-    .from("movies")
-    .insert([{ ...movieData, user_id: user.data.user.id }]);
+    if (sessionError || !session?.user?.id) {
+      set({ loading: false });
+      throw new Error("Usuario no autenticado");
+    }
 
-  if (error) {
-    set({ error: error.message, loading: false });
-    return;
-  }
+    const userId = session.user.id;
 
-  await get().fetchMovies();
+    const { data, error } = await supabase
+      .from("movies")
+      .insert([{ ...movieData, user_id: userId }])
+      .select();
 
-  set({ loading: false });
+    if (error) {
+      set({ loading: false });
+      throw new Error(error.message);
+    }
+
+    if (!data || data.length === 0) {
+      set({ loading: false });
+      throw new Error("No autorizado para crear película");
+    }
+
+    await get().fetchMovies();
+
+    set({ loading: false });
   },
 
   updateMovie: async (id, movieData) => {
-    set({ loading: true });
+    set({ loading: true, error: null });
 
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from("movies")
       .update(movieData)
-      .eq("id", id);
+      .eq("id", id)
+      .select();
 
     if (error) {
-      set({ error: error.message, loading: false });
-      return;
+      set({ loading: false });
+      throw new Error(error.message);
+    }
+
+    if (!data || data.length === 0) {
+      set({ loading: false });
+      throw new Error("No autorizado para actualizar esta película");
     }
 
     await get().fetchMovies();
@@ -64,21 +84,27 @@ export const useMovieStore = create((set, get) => ({
   },
 
   deleteMovie: async (id) => {
-  set({ loading: true });
+    set({ loading: true, error: null });
 
-  const { error } = await supabase
-    .from("movies")
-    .delete()
-    .eq("id", id);
+    const { data, error } = await supabase
+      .from("movies")
+      .delete()
+      .eq("id", id)
+      .select();
 
-  if (error) {
-    set({ error: error.message, loading: false });
-    return;
-  }
+    if (error) {
+      set({ loading: false });
+      throw new Error(error.message);
+    }
 
-  await get().fetchMovies();
+    if (!data || data.length === 0) {
+      set({ loading: false });
+      throw new Error("No autorizado para eliminar");
+    }
 
-  set({ loading: false });
+    await get().fetchMovies();
+
+    set({ loading: false });
   },
 
 }));
