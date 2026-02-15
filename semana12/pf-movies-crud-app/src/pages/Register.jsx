@@ -61,49 +61,86 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded shadow-md w-80"
-      >
-        <h2 className="text-xl font-bold mb-4 text-center">Registro</h2>
+    <div className="min-h-screen flex items-center justify-center px-6">
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="w-full mb-3 p-2 border rounded"
-          onChange={handleChange}
-        />
+      <div className="w-full max-w-md 
+                      bg-zinc-900 border border-zinc-800 
+                      rounded-2xl shadow-2xl p-8">
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          className="w-full mb-3 p-2 border rounded"
-          onChange={handleChange}
-        />
+        <h2 className="text-3xl font-bold text-white mb-2 text-center">
+          MovieApp
+        </h2>
 
-        {error && (
-          <p className="text-red-500 text-sm mb-2">{error}</p>
-        )}
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-green-500 text-white p-2 rounded cursor-pointer"
-        >
-          {loading ? "Cargando..." : "Registrarse"}
-        </button>
-
-        <p className="text-sm mt-3 text-center">
-          ¿Ya tienes cuenta?{" "}
-          <Link to="/login" className="text-blue-500">
-            Inicia sesión
-          </Link>
+        <p className="text-gray-400 text-center mb-6">
+          Crea tu cuenta para comenzar
         </p>
-      </form>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Correo electrónico"
+            onChange={handleChange}
+            className="w-full p-3 bg-zinc-800 border border-zinc-700 
+                      rounded-lg text-white placeholder-gray-400
+                      focus:outline-none focus:ring-2 focus:ring-red-500
+                      transition"
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            onChange={handleChange}
+            className="w-full p-3 bg-zinc-800 border border-zinc-700 
+                      rounded-lg text-white placeholder-gray-400
+                      focus:outline-none focus:ring-2 focus:ring-red-500
+                      transition"
+          />
+
+          {error && (
+            <div className="bg-red-900/40 border border-red-700 
+                            text-red-400 text-sm p-3 rounded-lg">
+              {error}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-3 rounded-lg font-semibold 
+            ${
+              loading
+                ? "bg-zinc-700 cursor-not-allowed"
+                : "bg-red-600 hover:bg-red-700 duration-300 cursor-pointer"
+            }`}
+          >
+            {loading ? (
+              <div className="flex justify-center items-center gap-2">
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                Registrando...
+              </div>
+            ) : (
+              "Crear Cuenta"
+            )}
+          </button>
+
+          <p className="text-sm text-gray-400 text-center pt-4">
+            ¿Ya tienes cuenta?{" "}
+            <Link
+              to="/login"
+              className="text-red-500 hover:text-red-400 duration-300 font-medium"
+            >
+              Inicia sesión
+            </Link>
+          </p>
+
+        </form>
+      </div>
+
     </div>
+
   );
 };
 

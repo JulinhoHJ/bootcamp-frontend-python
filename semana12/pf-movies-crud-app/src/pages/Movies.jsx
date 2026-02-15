@@ -1,12 +1,13 @@
 import { useMovies } from "../hooks/useMovies";
 import MovieCard from "../components/MovieCard";
 import { useNavigate } from "react-router";
+import Spinner from "../components/Spinner";
 
 const Movies = () => {
   const { movies, loading, error } = useMovies();
   const navigate = useNavigate();
 
-  if (loading) return <p className="text-center mt-10">Cargando...</p>;
+  if (loading) return <Spinner />
   if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
 
   return (

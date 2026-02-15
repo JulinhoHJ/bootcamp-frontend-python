@@ -59,7 +59,9 @@ const MovieCard = ({ movie }) => {
   };
 
   return (
-    <div className="bg-zinc-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 border border-zinc-800">
+    <div className="bg-zinc-900 border border-zinc-800 
+                rounded-xl p-4 shadow-lg 
+                hover:scale-105 transition duration-300">
       
       <div className="p-4">
         <h3 className="text-lg font-semibold text-red-500 mb-2">

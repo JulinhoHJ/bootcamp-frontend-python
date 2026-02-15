@@ -89,73 +89,117 @@ const CreateMovie = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h2 className="text-2xl font-bold mb-6">➕ Nueva Película</h2>
+    <div className="min-h-screen flex items-center justify-center px-6">
 
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg p-6 max-w-lg mx-auto"
-      >
-        <input
-          name="title"
-          placeholder="Título"
-          onChange={handleChange}
-          className="w-full p-2 mb-3 border rounded"
-        />
+      <div className="w-full max-w-xl 
+                      bg-zinc-900 border border-zinc-800 
+                      rounded-2xl shadow-2xl p-8">
 
-        <textarea
-          name="description"
-          placeholder="Descripción"
-          onChange={handleChange}
-          className="w-full p-2 mb-3 border rounded"
-        />
+        <h2 className="text-3xl font-bold text-white mb-3 text-center">
+          ➕ Nueva Película
+        </h2>
 
-        <input
-          name="genre"
-          placeholder="Género"
-          onChange={handleChange}
-          className="w-full p-2 mb-3 border rounded"
-        />
+        <p className="text-gray-400 mb-6">
+          Agrega una nueva película a tu colección.
+        </p>
 
-        <input
-          name="year"
-          placeholder="Año"
-          onChange={handleChange}
-          type="number"
-          className="w-full p-2 mb-3 border rounded"
-        />
+        <form onSubmit={handleSubmit} className="space-y-4">
 
-        <input
-          name="views"
-          placeholder="Vistas"
-          onChange={handleChange}
-          type="number"
-          className="w-full p-2 mb-3 border rounded"
-        />
+          <input
+            name="title"
+            placeholder="Título"
+            onChange={handleChange}
+            className="w-full p-3 bg-zinc-800 border border-zinc-700 
+                      rounded-lg text-white placeholder-gray-400
+                      focus:outline-none focus:ring-2 focus:ring-red-500
+                      transition"
+          />
 
-        <div className="flex gap-2">
-          <button
-            type="submit"
-            disabled={loading}
-            className={`cursor-pointer w-full p-2 rounded-lg text-white ${
-              loading ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
-            }`}
-          >
-            {loading ? "Guardando..." : "Guardar"}
-          </button>
-          
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className="bg-gray-500 w-full text-white p-2 rounded-lg hover:bg-gray-600 cursor-pointer"
-          >
-            Regresar
-          </button>
-        </div>
+          <textarea
+            name="description"
+            placeholder="Descripción"
+            onChange={handleChange}
+            rows="3"
+            className="w-full p-3 bg-zinc-800 border border-zinc-700 
+                      rounded-lg text-white placeholder-gray-400
+                      focus:outline-none focus:ring-2 focus:ring-red-500
+                      transition resize-none"
+          />
 
+          <input
+            name="genre"
+            placeholder="Género"
+            onChange={handleChange}
+            className="w-full p-3 bg-zinc-800 border border-zinc-700 
+                      rounded-lg text-white placeholder-gray-400
+                      focus:outline-none focus:ring-2 focus:ring-red-500
+                      transition"
+          />
 
-      </form>
+          <div className="grid grid-cols-2 gap-4">
+            <input
+              name="year"
+              placeholder="Año"
+              type="number"
+              onChange={handleChange}
+              className="w-full p-3 bg-zinc-800 border border-zinc-700 
+                        rounded-lg text-white placeholder-gray-400
+                        focus:outline-none focus:ring-2 focus:ring-red-500
+                        transition"
+            />
+
+            <input
+              name="views"
+              placeholder="Vistas"
+              type="number"
+              onChange={handleChange}
+              className="w-full p-3 bg-zinc-800 border border-zinc-700 
+                        rounded-lg text-white placeholder-gray-400
+                        focus:outline-none focus:ring-2 focus:ring-red-500
+                        transition"
+            />
+          </div>
+
+          <div className="flex gap-4 pt-4">
+
+            <button
+              type="submit"
+              disabled={loading}
+              className={`w-full py-3 rounded-lg font-semibold 
+              ${
+                loading
+                  ? "bg-zinc-700 cursor-not-allowed"
+                  : "bg-red-600 hover:bg-red-700 duration-300 cursor-pointer"
+              }`}
+            >
+              {loading ? (
+                <div className="flex justify-center items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  Guardando...
+                </div>
+              ) : (
+                "Guardar"
+              )}
+
+            </button>
+
+            <button
+              type="button"
+              onClick={() => navigate("/movies")}
+              className="w-full py-3 rounded-lg font-semibold 
+                        bg-zinc-800 border border-zinc-700
+                        hover:bg-zinc-700 duration-300 cursor-pointer"
+            >
+              Regresar
+            </button>
+
+          </div>
+
+        </form>
+      </div>
+
     </div>
+
   );
 };
 
