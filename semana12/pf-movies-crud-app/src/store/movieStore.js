@@ -7,17 +7,19 @@ export const useMovieStore = create((set, get) => ({
   loading: false,
   error: null,
 
-  fetchMovies: async () => {
-    set({ loading: true, error: null });
-
+  clearMovies: () => set({ movies: [] }),
+  
+  fetchMovies: async (userId) => {
+    set({ loading: true, error: null, movies: [] });
+    
     try {
-      const { data } = await supabase.auth.getUser();
-      const userId = data.user?.id;
-
       if (!userId) throw new Error("Usuario no autenticado");
-
+      /* const { data } = await supabase.auth.getUser();
+      const userId = data.user?.id; */
+      
+      
       const movies = await getMovies(userId);
-
+      
       set({ movies });
     } catch (error) {
       set({ error: error.message });
@@ -25,45 +27,45 @@ export const useMovieStore = create((set, get) => ({
       set({ loading: false });
     }
   },
-
+  
   createMovie: async (movieData) => {
     set({ loading: true, error: null });
 
     const { data: { session }, error: sessionError } =
       await supabase.auth.getSession();
+      
+      if (sessionError || !session?.user?.id) {
+        set({ loading: false });
+        throw new Error("Usuario no autenticado");
+      }
+      
+      const userId = session.user.id;
 
-    if (sessionError || !session?.user?.id) {
-      set({ loading: false });
-      throw new Error("Usuario no autenticado");
-    }
-
-    const userId = session.user.id;
-
-    const { data, error } = await supabase
+      const { data, error } = await supabase
       .from("movies")
       .insert([{ ...movieData, user_id: userId }])
       .select();
-
-    if (error) {
-      set({ loading: false });
-      throw new Error(error.message);
-    }
-
-    if (!data || data.length === 0) {
-      set({ loading: false });
-      throw new Error("No autorizado para crear película");
-    }
+      
+      if (error) {
+        set({ loading: false });
+        throw new Error(error.message);
+      }
+      
+      if (!data || data.length === 0) {
+        set({ loading: false });
+        throw new Error("No autorizado para crear película");
+      }
 
     await get().fetchMovies();
 
     set({ loading: false });
   },
-
+  
   updateMovie: async (id, movieData) => {
     set({ loading: true, error: null });
-
+    
     const { data, error } = await supabase
-      .from("movies")
+    .from("movies")
       .update(movieData)
       .eq("id", id)
       .select();
@@ -77,7 +79,7 @@ export const useMovieStore = create((set, get) => ({
       set({ loading: false });
       throw new Error("No autorizado para actualizar esta película");
     }
-
+    
     await get().fetchMovies();
 
     set({ loading: false });
@@ -85,13 +87,13 @@ export const useMovieStore = create((set, get) => ({
 
   deleteMovie: async (id) => {
     set({ loading: true, error: null });
-
+    
     const { data, error } = await supabase
-      .from("movies")
-      .delete()
-      .eq("id", id)
-      .select();
-
+    .from("movies")
+    .delete()
+    .eq("id", id)
+    .select();
+    
     if (error) {
       set({ loading: false });
       throw new Error(error.message);
@@ -101,7 +103,7 @@ export const useMovieStore = create((set, get) => ({
       set({ loading: false });
       throw new Error("No autorizado para eliminar");
     }
-
+    
     await get().fetchMovies();
 
     set({ loading: false });

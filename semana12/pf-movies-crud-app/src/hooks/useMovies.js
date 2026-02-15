@@ -1,5 +1,4 @@
 import { useMovieStore } from "../store/movieStore";
-import { useEffect } from "react";
 
 export const useMovies = () => {
   const {
@@ -12,14 +11,11 @@ export const useMovies = () => {
     deleteMovie,
   } = useMovieStore();
 
-  useEffect(() => {
-    fetchMovies();
-  }, [fetchMovies]);
-
   return {
     movies,
     loading,
     error,
+    fetchMovies,
     createMovie,
     updateMovie,
     deleteMovie,

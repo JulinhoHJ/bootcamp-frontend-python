@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { supabase } from "../lib/supabase";
+import { useMovieStore } from "./movieStore";
 
 export const useAuthStore = create((set) => ({
   user: null,
@@ -41,6 +42,7 @@ export const useAuthStore = create((set) => ({
   logout: async () => {
     await supabase.auth.signOut();
     set({ user: null });
+    useMovieStore.getState().clearMovies();
   },
 
   checkSession: async () => {

@@ -1,13 +1,23 @@
 import { useMovies } from "../hooks/useMovies";
 import MovieCard from "../components/MovieCard";
 import { useNavigate } from "react-router";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/Spinner.jsx";
+import { useAuth } from "../hooks/useAuth";
+import { useEffect } from "react";
 
 const Movies = () => {
-  const { movies, loading, error } = useMovies();
+  const { user } = useAuth();
+  const { movies, error, loading, fetchMovies } = useMovies();
   const navigate = useNavigate();
 
-  if (loading) return <Spinner />
+  useEffect(() => {
+    if (user?.id) {
+      fetchMovies(user.id);
+    }
+  }, [user?.id, fetchMovies]);
+
+  if (!user) return null;
+  if (loading) return <Spinner />;
   if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
 
   return (

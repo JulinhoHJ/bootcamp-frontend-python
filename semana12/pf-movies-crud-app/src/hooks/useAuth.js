@@ -1,5 +1,4 @@
 import { useAuthStore } from "../store/authStore";
-import { useEffect } from "react";
 
 export const useAuth = () => {
   const {
@@ -12,10 +11,6 @@ export const useAuth = () => {
     checkSession,
   } = useAuthStore();
 
-  useEffect(() => {
-    checkSession();
-  }, [checkSession]);
-
   return {
     user,
     loading,
@@ -23,5 +18,6 @@ export const useAuth = () => {
     login,
     register,
     logout,
+    checkSession,
   };
 };
