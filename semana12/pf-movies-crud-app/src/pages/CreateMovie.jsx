@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useMovieStore } from "../store/movieStore";
 import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const CreateMovie = () => {
   const navigate = useNavigate();
-  const { createMovie } = useMovieStore();
+  const { createMovie, loading } = useMovieStore();
 
   const [form, setForm] = useState({
     title: "",
@@ -21,19 +22,55 @@ const CreateMovie = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!form.title || !form.description || !form.genre) {
-      return alert("Completa todos los campos requeridos 🔥");
+    const currentYear = new Date().getFullYear();
+
+    if (!form.title.trim() || form.title.length < 2) {
+      return Swal.fire("Error", "El título debe tener al menos 2 caracteres", "error");
     }
 
-    await createMovie({
-      title: form.title,
-      description: form.description,
-      genre: form.genre,
-      year: Number(form.year),
-      views: Number(form.views),
-    });
+    if (!form.description.trim() || form.description.length < 10) {
+      return Swal.fire("Error", "La descripción debe tener mínimo 10 caracteres", "error");
+    }
 
-    navigate("/movies");
+    if (!form.genre.trim()) {
+      return Swal.fire("Error", "El género es obligatorio", "error");
+    }
+
+    if (form.year < 1900 || form.year > currentYear) {
+      return Swal.fire("Error", "Año inválido", "error");
+    }
+
+    if (form.views < 0) {
+      return Swal.fire("Error", "Las vistas no pueden ser negativas", "error");
+    }
+
+    try {
+      await createMovie({
+        ...form,
+        year: Number(form.year),
+        views: Number(form.views),
+      });
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Película creada 🎬"
+      });
+
+      navigate("/movies");
+    } catch (error) {
+      Swal.fire("Error", error.message, "error");
+    }
   };
 
   return (
@@ -83,10 +120,14 @@ const CreateMovie = () => {
 
         <button
           type="submit"
-          className="w-full bg-green-500 text-white p-2 rounded-lg hover:bg-green-600"
+          disabled={loading}
+          className={`cursor-pointer w-full p-2 rounded-lg text-white ${
+            loading ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
+          }`}
         >
-          Guardar
+          {loading ? "Guardando..." : "Guardar"}
         </button>
+
       </form>
     </div>
   );
