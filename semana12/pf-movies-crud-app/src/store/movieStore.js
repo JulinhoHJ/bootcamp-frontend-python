@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { supabase } from "../lib/supabase";
+import { getMovies } from "../services/movies";
 
 export const useMovieStore = create((set, get) => ({
   movies: [],
@@ -7,20 +8,22 @@ export const useMovieStore = create((set, get) => ({
   error: null,
 
   fetchMovies: async () => {
-    set({ loading: true });
-    const user = supabase.auth.getUser();
+    set({ loading: true, error: null });
 
-    const { data, error } = await supabase
-      .from("movies")
-      .select("*")
-      .eq("user_id", (await user).data.user?.id);
+    try {
+      const { data } = await supabase.auth.getUser();
+      const userId = data.user?.id;
 
-    if (error) {
+      if (!userId) throw new Error("Usuario no autenticado");
+
+      const movies = await getMovies(userId);
+
+      set({ movies });
+    } catch (error) {
       set({ error: error.message });
-    } else {
-      set({ movies: data });
+    } finally {
+      set({ loading: false });
     }
-    set({ loading: false });
   },
 
   createMovie: async (movieData) => {

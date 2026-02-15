@@ -15,8 +15,8 @@ export const useAuthStore = create((set) => ({
     });
 
     if (error) {
-      set({ error: error.message, loading: false });
-      return;
+      set({ loading: false });
+      throw new Error(error.message);
     }
 
     set({ user: data.user, loading: false });
@@ -31,8 +31,8 @@ export const useAuthStore = create((set) => ({
     });
 
     if (error) {
-      set({ error: error.message, loading: false });
-      return;
+      set({ loading: false });
+      throw new Error(error.message);
     }
 
     set({ user: data.user, loading: false });

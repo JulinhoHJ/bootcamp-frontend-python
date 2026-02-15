@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { Link, useNavigate } from "react-router";
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const { login, error, loading } = useAuth();
@@ -20,8 +21,43 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(form.email, form.password);
-    navigate("/movies");
+
+    if (!form.email || !form.password) {
+      Swal.fire({
+        icon: "warning",
+        title: "Campos requeridos",
+        text: "Debes ingresar email y contraseña",
+      });
+      return;
+    }
+
+    try {
+      await login(form.email, form.password);
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Bienvenido 🎬"
+      });
+
+      navigate("/movies");
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error al iniciar sesión",
+        text: error.message,
+      });
+    }
   };
 
   return (
