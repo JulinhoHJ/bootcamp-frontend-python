@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { supabase } from "../lib/supabase";
 
-export const useMovieStore = create((set) => ({
+export const useMovieStore = create((set, get) => ({
   movies: [],
   loading: false,
   error: null,
@@ -24,38 +24,58 @@ export const useMovieStore = create((set) => ({
   },
 
   createMovie: async (movieData) => {
-    set({ loading: true });
-    const user = await supabase.auth.getUser();
+  set({ loading: true });
 
-    const { data, error } = await supabase
-      .from("movies")
-      .insert([{ ...movieData, user_id: user.data.user.id }]);
+  const user = await supabase.auth.getUser();
 
-    if (error) {
-      set({ error: error.message });
-    }
-    set({ loading: false });
+  const { error } = await supabase
+    .from("movies")
+    .insert([{ ...movieData, user_id: user.data.user.id }]);
+
+  if (error) {
+    set({ error: error.message, loading: false });
+    return;
+  }
+
+  await get().fetchMovies();
+
+  set({ loading: false });
   },
 
   updateMovie: async (id, movieData) => {
     set({ loading: true });
+
     const { error } = await supabase
       .from("movies")
       .update(movieData)
       .eq("id", id);
 
-    if (error) set({ error: error.message });
+    if (error) {
+      set({ error: error.message, loading: false });
+      return;
+    }
+
+    await get().fetchMovies();
+
     set({ loading: false });
   },
 
   deleteMovie: async (id) => {
-    set({ loading: true });
-    const { error } = await supabase
-      .from("movies")
-      .delete()
-      .eq("id", id);
+  set({ loading: true });
 
-    if (error) set({ error: error.message });
-    set({ loading: false });
+  const { error } = await supabase
+    .from("movies")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    set({ error: error.message, loading: false });
+    return;
+  }
+
+  await get().fetchMovies();
+
+  set({ loading: false });
   },
+
 }));
