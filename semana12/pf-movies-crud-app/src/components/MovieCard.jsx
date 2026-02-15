@@ -59,35 +59,41 @@ const MovieCard = ({ movie }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-5 hover:shadow-xl transition">
-      <h2 className="text-xl font-bold mb-2">{movie.title}</h2>
+    <div className="bg-zinc-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 border border-zinc-800">
+      
+      <div className="p-4">
+        <h3 className="text-lg font-semibold text-red-500 mb-2">
+          {movie.title}
+        </h3>
 
-      <p className="text-gray-600 text-sm mb-2">
-        {movie.description}
-      </p>
+        <p className="text-sm text-gray-400 mb-5 line-clamp-2">
+          {movie.description}
+        </p>
 
-      <div className="text-sm text-gray-500 mb-3">
-        🎭 {movie.genre} | 📅 {movie.year}
-      </div>
+        <div className="flex justify-between text-xs text-gray-500 mb-5">
+          <span>🎭 {movie.genre}</span>
+          <span>📅 {movie.year}</span>
+        </div>
+        
+        <div className="text-xs text-gray-500 mb-5">
+          👁️ {movie.views} vistas
+        </div>
 
-      <div className="text-sm text-gray-400 mb-4">
-        👁 {movie.views} vistas
-      </div>
-
-      <div className="flex gap-2">
-        <button
-          onClick={() => navigate(`/movies/edit/${movie.id}`)}
-          className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 cursor-pointer"
-        >
-          Editar
-        </button>
-
-        <button
-          onClick={handleDelete}
-          className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 cursor-pointer"
-        >
-          Eliminar
-        </button>
+        <div className="flex gap-2">
+          <button 
+            onClick={() => navigate(`/movies/edit/${movie.id}`)}
+            className="flex-1 bg-yellow-500 hover:bg-yellow-600 py-1 rounded-lg transition cursor-pointer"
+          >
+            Editar
+          </button>
+          <button 
+            onClick={handleDelete}
+            className="flex-1 bg-red-600 hover:bg-red-700 py-1 rounded-lg transition cursor-pointer"
+          >
+            Eliminar
+          </button>
+        </div>
+        
       </div>
     </div>
   );

@@ -153,15 +153,25 @@ const EditMovie = () => {
           className="w-full p-2 mb-3 border rounded"
         />
 
-        <button
-          type="submit"
-          disabled={loading}
-          className={`cursor-pointer w-full p-2 rounded-lg text-white ${
-            loading ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
-          }`}
-        >
-          {loading ? "Actualizando..." : "Actualizar"}
-        </button>
+        <div className="flex gap-2">
+          <button
+            type="submit"
+            disabled={loading}
+            className={`cursor-pointer w-full p-2 rounded-lg text-white ${
+              loading ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
+            }`}
+          >
+            {loading ? "Actualizando..." : "Actualizar"}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="bg-gray-500 w-full text-white p-2 rounded-lg hover:bg-gray-600 cursor-pointer"
+          >
+            Regresar
+          </button>
+        </div>
 
       </form>
     </div>
