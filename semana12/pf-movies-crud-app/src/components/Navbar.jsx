@@ -1,23 +1,71 @@
+import { Link, useNavigate } from "react-router";
+import { useAuth } from "../hooks/useAuth";
+
 const Navbar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/login");
+  };
+
   return (
-    <div className="flex justify-between items-center px-8 py-4 bg-black border-b border-zinc-800">
-      <h1 className="text-2xl font-bold text-red-600">
-        MovieApp
-      </h1>
+    <nav className="bg-black text-white shadow-md">
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <div className="text-2xl font-bold text-red-500">
+          <Link to="/movies">MovieApp</Link>
+        </div>
 
-      <div className="flex gap-4">
-        <Link to="/movies" className="hover:text-red-500 transition">
-          Películas
-        </Link>
-        <Link to="/create" className="hover:text-red-500 transition">
-          Crear
-        </Link>
-        <button className="bg-red-600 px-4 py-1 rounded-lg">
-          Logout
-        </button>
+        {/* Links */}
+        <div className="flex gap-6 items-center">
+          {user && (
+            <>
+              <Link
+                to="/movies"
+                className="hover:text-red-500 transition"
+              >
+                Películas
+              </Link>
+
+              <Link
+                to="/movies/new"
+                className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded transition"
+              >
+                + Crear
+              </Link>
+            </>
+          )}
+
+          {!user ? (
+            <>
+              <Link
+                to="/login"
+                className="hover:text-red-500 transition"
+              >
+                Login
+              </Link>
+
+              <Link
+                to="/register"
+                className="hover:text-red-500 transition"
+              >
+                Register
+              </Link>
+            </>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded transition cursor-pointer"
+            >
+              Logout
+            </button>
+          )}
+        </div>
       </div>
-    </div>
-  )
-}
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
