@@ -10,7 +10,7 @@ const Movies = () => {
   if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-linear-to-b from-black via-zinc-900 to-black text-white p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold mx-auto">🎬 Mis Películas</h1>
       </div>
