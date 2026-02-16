@@ -2,13 +2,14 @@ const Spinner = ({ fullScreen = false }) => {
   return (
     <div
       className={`flex justify-center items-center ${
-        fullScreen ? "h-screen" : "py-10"
+        fullScreen
+          ? "fixed inset-0 bg-black bg-opacity-80 z-50"
+          : "py-10"
       }`}
     >
-      <div className="w-10 h-10 border-4 
+      <div className="w-12 h-12 border-4 
                       border-red-600 border-t-transparent 
-                      rounded-full animate-spin">
-      </div>
+                      rounded-full animate-spin"></div>
     </div>
   );
 };

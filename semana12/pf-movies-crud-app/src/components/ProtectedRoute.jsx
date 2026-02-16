@@ -2,9 +2,9 @@ import { Navigate, Outlet } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 
 const ProtectedRoute = () => {
-  const { user, loading } = useAuth();
+  const { user, initializing } = useAuth();
 
-  if (loading) return <p className="text-center mt-10">Cargando...</p>;
+  if (initializing) return <Spinner fullScreen />;
 
   if (!user) {
     return <Navigate to="/login" replace />;

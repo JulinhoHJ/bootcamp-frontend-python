@@ -61,9 +61,10 @@ const MovieCard = ({ movie }) => {
   return (
     <div className="bg-zinc-900 border border-zinc-800 
                 rounded-xl p-4 shadow-lg 
-                hover:scale-105 transition duration-300">
+                hover:scale-105 transition duration-300
+                flex flex-col h-full">
       
-      <div className="p-4">
+      <div className="flex flex-col flex-1">
         <h3 className="text-lg font-semibold text-red-500 mb-2">
           {movie.title}
         </h3>
@@ -71,17 +72,19 @@ const MovieCard = ({ movie }) => {
         <p className="text-sm text-gray-400 mb-5 line-clamp-2">
           {movie.description}
         </p>
-
-        <div className="flex justify-between text-xs text-gray-500 mb-5">
-          <span>🎭 {movie.genre}</span>
-          <span>📅 {movie.year}</span>
-        </div>
         
-        <div className="text-xs text-gray-500 mb-5">
-          👁️ {movie.views} vistas
+        <div className="text-xs text-gray-500 mb-5 space-y-2">
+          <div className="flex justify-between">
+            <span>🎭 {movie.genre}</span>
+            <span>📅 {movie.year}</span>
+          </div>
+          
+          <div className="">
+            👁️ {movie.views} vistas
+          </div>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 mt-auto">
           <button 
             onClick={() => navigate(`/movies/edit/${movie.id}`)}
             className="flex-1 bg-yellow-500 hover:bg-yellow-600 py-1 rounded-lg transition cursor-pointer"

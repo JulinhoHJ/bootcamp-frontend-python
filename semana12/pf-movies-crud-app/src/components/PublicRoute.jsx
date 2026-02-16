@@ -4,7 +4,7 @@ import { useAuth } from "../hooks/useAuth";
 const PublicRoute = () => {
   const { user, initializing } = useAuth();
 
-  if (initializing) return <Spinner />;
+  if (initializing) return <Spinner fullScreen />;
 
   if (user) {
     return <Navigate to="/movies" replace />;
