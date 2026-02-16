@@ -9,6 +9,7 @@ export const useAuth = () => {
     register,
     logout,
     checkSession,
+    initializing,
   } = useAuthStore();
 
   return {
@@ -19,5 +20,6 @@ export const useAuth = () => {
     register,
     logout,
     checkSession,
+    initializing,
   };
 };

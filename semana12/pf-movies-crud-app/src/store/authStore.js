@@ -6,6 +6,7 @@ export const useAuthStore = create((set) => ({
   user: null,
   loading: false,
   error: null,
+  initializing: true,
 
   register: async (email, password) => {
     set({ loading: true, error: null });
@@ -46,7 +47,15 @@ export const useAuthStore = create((set) => ({
   },
 
   checkSession: async () => {
-    const { data } = await supabase.auth.getSession();
-    set({ user: data.session?.user || null });
+    try {
+      const { data } = await supabase.auth.getSession();
+      set({ user: data.session?.user || null });
+    } finally {
+      set({ initializing: false });
+    }
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      set({ user: session?.user || null });
+    });
   },
 }));

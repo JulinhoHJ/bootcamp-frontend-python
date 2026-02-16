@@ -5,13 +5,14 @@ import { useEffect } from "react";
 import Spinner from "./components/Spinner";
 
 const App = () => {
-  const { checkSession, loading } = useAuth()
+  const { checkSession, initializing } = useAuth()
 
   useEffect(() => {
     checkSession()
-  }, [checkSession])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  if (loading) {
+  if (initializing) {
     return <Spinner fullScreen />
   }
 
