@@ -16,8 +16,8 @@ const Movies = () => {
     }
   }, [user?.id, fetchMovies]);
 
-  if (!user) return <Spinner />;
-  if (loading) return <Spinner />;
+  if (!user) return <Spinner fullScreen />;
+  if (loading && movies.length !== 0) return <Spinner fullScreen />;
   if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
 
   return (

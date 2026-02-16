@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from "react-router";
 import { useAuth } from "../hooks/useAuth";
+import Spinner from "./Spinner";
 
 const PublicRoute = () => {
   const { user, initializing } = useAuth();

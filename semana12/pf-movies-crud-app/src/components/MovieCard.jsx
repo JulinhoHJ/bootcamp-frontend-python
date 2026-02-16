@@ -1,12 +1,21 @@
 import { useNavigate } from "react-router";
 import { useMovieStore } from "../store/movieStore";
 import Swal from "sweetalert2";
+import { toast } from "../utils/alerts";
 
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
   const { deleteMovie } = useMovieStore();
 
   const handleDelete = async () => {
+    if (!movie?.id) {
+      toast.fire({
+        icon: "error",
+        title: "No se encontró un ID válido para esta película"
+      });
+      return;
+    }
+
     const result = await Swal.fire({
       title: "¿Estás seguro?",
       text: "Esta película será eliminada",
@@ -20,36 +29,12 @@ const MovieCard = ({ movie }) => {
     if (result.isConfirmed) {
       try {
         await deleteMovie(movie.id);
-
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          }
-        });
-        Toast.fire({
+        toast.fire({
           icon: "success",
           title: "Película eliminada 🎬"
         });
       } catch (error) {
-        //Swal.fire("Error", error.message, "error");
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          }
-        });
-        Toast.fire({
+        toast.fire({
           icon: "error",
           title: error.message
         });
@@ -59,18 +44,14 @@ const MovieCard = ({ movie }) => {
   };
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 
-                rounded-xl p-4 shadow-lg 
-                hover:scale-105 transition duration-300
-                flex flex-col h-full">
-      
+    <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-4 shadow-lg hover:scale-105 transition duration-300 flex flex-col h-full">
       <div className="flex flex-col flex-1">
         <h3 className="text-lg font-semibold text-red-500 mb-2">
-          {movie.title}
+          {movie?.title || 'Sin título'}
         </h3>
 
         <p className="text-sm text-gray-400 mb-5 line-clamp-2">
-          {movie.description}
+          {movie?.description || 'No hay descripción disponible'}
         </p>
         
         <div className="text-xs text-gray-500 mb-5 space-y-2">
